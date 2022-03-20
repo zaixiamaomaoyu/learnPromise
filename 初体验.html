@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>点击发送请求</button>
+  <script>
+    function myRandom(min,max){
+      return Math.floor(Math.random() * (max-min+1))+min
+    }
+    
+    
+    const btn = document.querySelector('button')
+    btn.addEventListener('click',function(){
+      var n = myRandom(1,100)
+      let p = new Promise((resolve,reject) => {
+        setTimeout(() => {
+          if(n<=30){
+            resolve(n)
+          }else{
+            reject(n)
+          }
+        }, 500);
+      })
+      p.then(value => {
+        console.log('你中奖了，你的中将号码是'+value);
+      },reason => {
+        console.log('很遗憾你并没有中将，你的未中奖号是'+reason);
+      })
+    })
+
+  </script>
+</body>
+</html>
